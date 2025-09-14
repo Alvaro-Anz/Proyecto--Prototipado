@@ -1,0 +1,694 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import random
+import textwrap
+
+class UniversidadDelValle:
+    def __init__(self):
+        # ---------- FACULTADES, DECANOS, CARRERAS, DIRECTORES y DESCRIPCIONES ----------
+        # Datos combinados desde "prototipo F2.py" y descripciones del PDF "Fiñler"
+        self.facultades = {
+            "Facultad de Ingeniería": {
+                "decano": "M.Sc. Víctor Hugo Ayerdi Bardales",
+                "carreras": {
+                    1: {
+                        "nombre": "Ingeniería Biomédica",
+                        "director": "M.Sc. Carlos Esquit",
+                        "descripcion": (
+                            "Combina principios de ingeniería con conocimientos de medicina y biología "
+                            "para diseñar, desarrollar y mantener equipos y software médico (como prótesis, "
+                            "equipos de diagnóstico por imágenes y monitores de signos vitales)."
+                        )
+                    },
+                    2: {
+                        "nombre": "Ingeniería en Biotecnología Industrial",
+                        "director": "M.Sc. Gamaliel Zambrano",
+                        "descripcion": (
+                            "Aplica la biotecnología a procesos industriales para la producción de bienes y servicios "
+                            "como enzimas, biocombustibles, bioplásticos y alimentos de manera eficiente y sostenible."
+                        )
+                    },
+                    3: {
+                        "nombre": "Ingeniería en Ciencias de los Alimentos",
+                        "director": "M.Sc. Ana Silvia Colmenares de Ruiz",
+                        "descripcion": (
+                            "Se enfoca en la aplicación de principios de ingeniería, química y microbiología para "
+                            "el procesamiento, conservación y distribución de alimentos garantizando seguridad y calidad."
+                        )
+                    },
+                    4: {
+                        "nombre": "Ingeniería en Ciencia de la Administración",
+                        "director": "MBA Raúl Fernando Dacaret Román",
+                        "descripcion": (
+                            "Combina una sólida base en ingeniería con herramientas de administración, economía y análisis "
+                            "de datos para optimizar sistemas organizacionales y toma de decisiones estratégicas."
+                        )
+                    },
+                    5: {
+                        "nombre": "Ingeniería Civil",
+                        "director": "M.Sc. Otoniel Alejandro Echeverría Castellanos",
+                        "descripcion": (
+                            "Se dedica al diseño, construcción, mantenimiento y gestión de infraestructuras como carreteras, puentes, "
+                            "túneles y sistemas de abastecimiento de agua y saneamiento."
+                        )
+                    },
+                    6: {
+                        "nombre": "Ingeniería Civil Arquitectónica",
+                        "director": "M.Sc. Otoniel Alejandro Echeverría Castellanos",
+                        "descripcion": (
+                            "Fusión entre ingeniería civil y arquitectura: profesionales capaces de diseñar y ejecutar proyectos integrando "
+                            "creatividad arquitectónica con solidez estructural."
+                        )
+                    },
+                    7: {
+                        "nombre": "Ingeniería en Computación y Tecnologías de la Información",
+                        "director": "M.Sc. Douglas Barrios",
+                        "descripcion": (
+                            "Se centra en diseño, desarrollo, implementación y gestión de sistemas de software, bases de datos y redes para solucionar problemas en diversos sectores."
+                        )
+                    },
+                    8: {
+                        "nombre": "Ingeniería Electrónica",
+                        "director": "M.Sc. Carlos Esquit",
+                        "descripcion": (
+                            "Aplica física y tecnología de sistemas electrónicos para diseñar circuitos y sistemas de control, "
+                            "comunicaciones, automatización y robótica."
+                        )
+                    },
+                    9: {
+                        "nombre": "Ingeniería Industrial",
+                        "director": "Ing. Ingrid Lorena de León Vilaseca",
+                        "descripcion": (
+                            "Optimización de sistemas integrados de personas, materiales, información y equipos para mejorar productividad y calidad."
+                        )
+                    },
+                    10: {
+                        "nombre": "Ingeniería Mecánica",
+                        "director": "M.Sc. Gustavo Barrera",
+                        "descripcion": (
+                            "Diseño, análisis, construcción y mantenimiento de sistemas y dispositivos mecánicos y térmicos (motores, maquinaria, etc.)."
+                        )
+                    },
+                    11: {
+                        "nombre": "Ingeniería Mecánica Industrial",
+                        "director": "M.Sc. Gustavo Barrera",
+                        "descripcion": (
+                            "Especialización en optimización de procesos de manufactura y producción industrial combinando diseño mecánico y gestión."
+                        )
+                    },
+                    12: {
+                        "nombre": "Ingeniería Mecatrónica",
+                        "director": "M.Sc. Carlos Esquit",
+                        "descripcion": (
+                            "Campo interdisciplinario que integra ingeniería mecánica, electrónica, control automático e informática para crear sistemas inteligentes."
+                        )
+                    },
+                    13: {
+                        "nombre": "Ingeniería Química",
+                        "director": "M.Sc. Gamaliel Zambrano",
+                        "descripcion": (
+                            "Aplica principios de química, física y matemáticas para diseñar y optimizar procesos industriales que transforman materias primas en productos."
+                        )
+                    },
+                    14: {
+                        "nombre": "Ingeniería Química Industrial",
+                        "director": "M.Sc. Gamaliel Zambrano",
+                        "descripcion": (
+                            "Versión aplicada de Ingeniería Química centrada en gestión y optimización de procesos industriales y manufactura."
+                        )
+                    }
+                }
+            },
+
+            "Facultad de Bridge Business School": {
+                "decano": "Mgtr. Ofelia Fernandez de la Torre",
+                "carreras": {
+                    1: {
+                        "nombre": "Ingeniería en Ciencia de la Administración",
+                        "director": "MBA Raúl Fernando Dacaret Román",
+                        "descripcion": (
+                            "Combinación de ingeniería con herramientas de administración para mejorar sistemas organizacionales y desempeño empresarial."
+                        )
+                    },
+                    2: {
+                        "nombre": "Administración de Empresas",
+                        "director": "MBA Raúl Fernando Dacaret Román",
+                        "descripcion": (
+                            "Forma profesionales para gestionar áreas funcionales de organizaciones (finanzas, marketing, RR.HH., operaciones)."
+                        )
+                    },
+                    3: {
+                        "nombre": "International Marketing and Business Analytics",
+                        "director": "MBA José Carlos Cárcamo",
+                        "descripcion": (
+                            "Combina marketing internacional con análisis de datos para comprender consumidores y medir campañas a escala global."
+                        )
+                    },
+                    4: {
+                        "nombre": "Comunicación Estratégica",
+                        "director": "M.A. Luna Mishaan",
+                        "descripcion": (
+                            "Diseño y gestión de planes de comunicación integral para construir y proteger la reputación de organizaciones."
+                        )
+                    }
+                }
+            },
+
+            "Facultad de Educación": {
+                "decano": "MPA Carolina Roca",
+                "carreras": {
+                    1: {
+                        "nombre": "Profesorado y Licenciatura en Educación (Ciencias Biológicas y Químicas)",
+                        "director": "M.A. Ester Cristina Ruiz Cruz",
+                        "descripcion": (
+                            "Formación docente con especialización en Biología y Química, combinando pedagogía y conocimiento disciplinar para la enseñanza."
+                        )
+                    },
+                    2: {
+                        "nombre": "Profesorado y Licenciatura en Educación (Ciencias Sociales)",
+                        "director": "Lda. Ester Cristina Ruiz Cruz",
+                        "descripcion": (
+                            "Formación en pedagogía y contenido disciplinar para impartir materias de ciencias sociales en distintos niveles educativos."
+                        )
+                    },
+                    3: {
+                        "nombre": "Profesorado y Licenciatura en Educación (Comunicación y Lenguaje)",
+                        "director": "M.A. Ester Cristina Ruiz Cruz",
+                        "descripcion": (
+                            "Formación orientada a enseñanza del lenguaje, comunicación y alfabetización con estrategias pedagógicas."
+                        )
+                    },
+                    4: {
+                        "nombre": "Profesorado y Licenciatura en Educación (Educación Inclusiva)",
+                        "director": "Lda. Leslie Staackmann",
+                        "descripcion": (
+                            "Preparación para diseñar y aplicar estrategias educativas que permitan la inclusión de estudiantes con necesidades diversas."
+                        )
+                    },
+                    5: {
+                        "nombre": "Profesorado y Licenciatura en Educación (Educación Musical)",
+                        "director": "Lic. Mayra Araceli Carrera Alvarado",
+                        "descripcion": (
+                            "Formación de docentes especializados en educación musical, didáctica y práctica instrumental/vocal."
+                        )
+                    },
+                    6: {
+                        "nombre": "Profesorado y Licenciatura en Educación (Educación Primaria)",
+                        "director": "Lda. Ester Cristina Ruiz Cruz",
+                        "descripcion": (
+                            "Formación para enseñar en primaria: pedagogía, didáctica, planificación curricular y evaluación."
+                        )
+                    },
+                    7: {
+                        "nombre": "Profesorado y Licenciatura en Educación (English Language Teaching)",
+                        "director": "M.A. Karin Rossbach Lemus",
+                        "descripcion": (
+                            "Especialización en enseñanza del idioma inglés con metodología y técnicas para distintos niveles educativos."
+                        )
+                    },
+                    8: {
+                        "nombre": "Profesorado y Licenciatura en Educación (Matemática y Ciencias Físicas)",
+                        "director": "M.A. Ester Cristina Ruiz Cruz",
+                        "descripcion": (
+                            "Formación docente especializada en matemáticas y física, con énfasis en didáctica y experimentación."
+                        )
+                    },
+                    9: {
+                        "nombre": "Profesorado Especializado en Problemas del Aprendizaje",
+                        "director": "Lda. Leslie Carolina Staackmann",
+                        "descripcion": (
+                            "Prepara especialistas para identificar, diagnosticar e intervenir pedagógicamente las dificultades de aprendizaje."
+                        )
+                    }
+                }
+            },
+
+            "Facultad de Ciencias y Humanidades": {
+                "decano": "Dra. Pamela Pennington",
+                "carreras": {
+                    1: {
+                        "nombre": "Licenciatura en Biología",
+                        "director": "MSc. Gabriela Alfaro Marroquín",
+                        "descripcion": (
+                            "Estudio de los seres vivos: estructura, función, evolución y relaciones con el medio ambiente."
+                        )
+                    },
+                    2: {
+                        "nombre": "Licenciatura en Bioquímica y Microbiología",
+                        "director": "Dra. Patrizia Lupo",
+                        "descripcion": (
+                            "Investiga procesos químicos y moleculares en organismos y el estudio de microorganismos con aplicaciones en salud e industria."
+                        )
+                    },
+                    3: {
+                        "nombre": "Licenciatura en Biotecnología Molecular",
+                        "director": "Dra. Patrizia Lupo",
+                        "descripcion": (
+                            "Manipulación molecular y celular (ADN, genes) para desarrollar tecnologías en medicina, agricultura y farmacéutica."
+                        )
+                    },
+                    4: {
+                        "nombre": "Licenciatura en Comunicación Estratégica",
+                        "director": "Lda. Luna Mishaan",
+                        "descripcion": (
+                            "Formación en comunicación aplicada a empresas, instituciones y gestión de la reputación."
+                        )
+                    },
+                    5: {
+                        "nombre": "Licenciatura en Física",
+                        "director": "MSc. Eduardo Alvarez Massis",
+                        "descripcion": (
+                            "Estudio de la materia y la energía: mecánica, electromagnetismo, termodinámica y física moderna."
+                        )
+                    },
+                    6: {
+                        "nombre": "Licenciatura en Matemática Aplicada",
+                        "director": "MA. Nancy Anely Zurita Villagrán",
+                        "descripcion": (
+                            "Aplicación de matemáticas avanzadas (modelos, estadística, algoritmos) para resolver problemas en ciencia y tecnología."
+                        )
+                    },
+                    7: {
+                        "nombre": "Licenciatura en Nutrición",
+                        "director": "MA. Ana Isabel Rosal",
+                        "descripcion": (
+                            "Formación en alimentación humana, evaluación nutricional y planificación de dietas saludables."
+                        )
+                    },
+                    8: {
+                        "nombre": "Licenciatura en Química",
+                        "director": "Lda. Irma Patricia Orellana Catalán",
+                        "descripcion": (
+                            "Estudio de la composición, propiedades y transformaciones de la materia con énfasis en laboratorio y control de calidad."
+                        )
+                    },
+                    9: {
+                        "nombre": "Licenciatura en Química Farmacéutica",
+                        "director": "MA. Elfego Rolando López",
+                        "descripcion": (
+                            "Diseño, síntesis y análisis de medicamentos; garante de la calidad y seguridad farmacéutica."
+                        )
+                    }
+                }
+            },
+
+            "Facultad de Ciencias Sociales": {
+                "decano": "Dra. Linda Asturias de Barrios",
+                "carreras": {
+                    1: {
+                        "nombre": "Licenciatura en Antropología y Sociología",
+                        "director": "M.A. Isolda Annette Fortín",
+                        "descripcion": (
+                            "Integración del estudio de la diversidad cultural humana (antropología) y el análisis de sociedades e instituciones (sociología)."
+                        )
+                    },
+                    2: {
+                        "nombre": "Licenciatura en Arqueología",
+                        "director": "Lic. Tomás Barrientos Quezada",
+                        "descripcion": (
+                            "Investigación de sociedades humanas del pasado mediante recuperación y análisis de restos materiales."
+                        )
+                    },
+                    3: {
+                        "nombre": "Licenciatura en Psicología",
+                        "director": "Dra. Dina María Elías Rodas",
+                        "descripcion": (
+                            "Ciencia del comportamiento y los procesos mentales aplicada a evaluación, diagnóstico e intervención."
+                        )
+                    },
+                    4: {
+                        "nombre": "Licenciatura en Relaciones Internacionales",
+                        "director": "Mgtr. Luis Andrés Padilla",
+                        "descripcion": (
+                            "Análisis de relaciones entre estados y actores globales: diplomacia, economía, conflictos y cooperación internacional."
+                        )
+                    }
+                }
+            },
+
+            "Design Innovation and Arts School": {
+                "decano": "MA. María Cecilia de León",
+                "carreras": {
+                    1: {
+                        "nombre": "Licenciatura en Composición y Producción Musical",
+                        "director": "MA. Diego Raúl Guzmán",
+                        "descripcion": (
+                            "Formación en composición, producción, grabación y mezcla musical con herramientas técnicas y artísticas."
+                        )
+                    },
+                    2: {
+                        "nombre": "Licenciatura en Diseño de Productos e Innovación",
+                        "director": "MA. María Cecilia de León",
+                        "descripcion": (
+                            "Diseño y desarrollo de productos físicos centrados en el usuario, con viabilidad técnica y comercial."
+                        )
+                    }
+                }
+            },
+
+            "Colegio Universitario": {
+                "decano": "Lda. Maricruz Alvarez Mury",
+                "carreras": {
+                    1: {
+                        "nombre": "Baccalaureatus en Artibus (B.A.)",
+                        "director": "Lda. Maricruz Alvarez Mury",
+                        "descripcion": "Programa general con orientación a Artes y Humanidades."
+                    },
+                    2: {
+                        "nombre": "Baccalaureatus en Scientiis (B.S.)",
+                        "director": "Lda. Maricruz Alvarez Mury",
+                        "descripcion": "Programa general con orientación en Ciencias y Tecnología."
+                    }
+                }
+            },
+
+            "Escuela de Arquitectura": {
+                "decano": "Lic. Eduardo Francisco Escobar Monzón",
+                "carreras": {
+                    1: {
+                        "nombre": "Licenciatura en Arquitectura",
+                        "director": "Lic. Eduardo Francisco Escobar Monzón",
+                        "descripcion": (
+                            "Profesion dedicada al diseño, planificación y construcción de espacios y edificios con criterios de funcionalidad y sostenibilidad."
+                        )
+                    }
+                }
+            }
+        }
+
+        # ---------- CURSOS POR SEMESTRE Y DOCENTES (con bios simuladas cuando faltan) ----------
+        # Aprovechamos la lista del prototipo y agregamos breves descripciones simuladas para docentes sin info.
+        self.docente_bios = {}  # mapeo nombre -> bio (si falta se genera)
+        # Prellenar algunas bios basadas en roles conocidos
+        prebios = {
+            "María Isabel Carrascosa": "Experta en comunicación y ciudadanía con experiencia en proyectos comunitarios.",
+            "Rony Herrarte": "Coach educativo, trabaja en acompañamiento al estudiante de ingreso.",
+            "Isis López": "Especialista en orientación y apoyo psicopedagógico.",
+            "Ing. Laura Roldán": "Docente de dibujo técnico con experiencia en diseño mecánico.",
+            "MSc. Héctor Gómez": "Investigador en áreas de manufactura y diseño.",
+            "MSc. Gustavo Barrera": "Docente en ingeniería mecánica con amplia experiencia en proyectos prácticos.",
+            "José Antonio Bagur Nájera": "Experto en manufactura digital y prototipado rápido.",
+            "Erick Marroquín": "Coordinador de curso de programación, con experiencia en enseñanza de algoritmos.",
+            "M.A. Ronald Curtiss Quiñónez": "Matemático y coordinador de cursos de cálculo."
+        }
+        self.docente_bios.update(prebios)
+
+        # Cursos por semestre (usando el prototipo)
+        self.cursos = {
+            "Primer Semestre": {
+                "Ciudadanía Global": ["María Isabel Carrascosa"],
+                "Coaching para la Excelencia": ["Rony Herrarte", "Isis López"],
+                "Dibujo Mecánico": ["Ing. Laura Roldán", "MSc. Héctor Gómez", "Ing. Eileen Nancy Del Carmen Meda Albizures"],
+                "Introducción a la Ingeniería Mecánica": ["MSc. Gustavo Barrera", "Ing. Samuel Reyes", "Ing. Luis Diego Castañeda"],
+                "Manufactura Digital": ["José Antonio Bagur Nájera"],
+                "Pensamiento Cuantitativo": [
+                    "Amalia Ruballos", "Ronald Curtiss", "Eugenio Aristondo", "José Pablo Ortega", "Luis Alvarado",
+                    "Zayda Pérez", "Ma.Eugenia de Nieves", "Nancy Zurita", "Christian Ramírez", "Rodrigo Leonardo",
+                    "Ranferi Gutiérrez", "Arturo Castellanos", "Daniel Romero"
+                ],
+                "Química General": ["Ing. María Romero", "Ing. Hugo Oliveros", "Lic. Julio Guzmán", "Lic. Hugo Escobar", "Lic. Saúl Loaiza"]
+            },
+            "Segundo Semestre": {
+                "Algoritmos y Programación Básica": ["Erick Marroquín", "Leonel Guillén", "Kimberly Barrera", "Luis Esturbán", "Pablo Koch", "Diego Contreras"],
+                "Cálculo 1": ["M.A. Ronald Curtiss Quiñónez", "M.A. Amalia Esmeralda Ruballos", "M.A. Magda V. Mendizábal", "M.A. Luis Fernando Alvarado", "MBA Arturo René Castellanos", "Ing. Luis Edgar Arana", "Ing. Julio David Guzmán", "MSc. Danilo Rodríguez", "Dr. Ranferí Gutiérrez", "Dr. José Ernesto Ramírez", "MSc. José Daniel Romero", "M.A. Ingrid Susanne", "M.A. Nancy Anely Zurita"],
+                "Comunicación Efectiva": ["M.A. María Isabel Prado Cobos"],
+                "Estadística 1": ["M.A. Amalia Ruballos", "M.A. Luis Alvarado", "M.A. Denise Pemueller", "PhD. Zayda Pérez", "M.A. Aníbal Vargas", "M.A. Eugenio Aristondo", "Ing. Arturo Castellanos", "Ing. Danilo Rodríguez", "PhD. José Ramírez", "M.Sc José Daniel Romero", "M.A. Irina Reyes"],
+                "Física 1": ["Lic. Zaida Urrutia", "M.A. María Elisa Duarte", "M.A. Elí Saúl De Paz", "M.A. Magda Moscoso", "Lic. Gonzalo Morán", "MSc Irene Aguilar", "MSc Antonio Mendez"],
+                "Máquinas Herramienta": ["Ing. Gustavo Pineda", "Edgar Castillo"]
+            }
+        }
+
+        # ---------- CURSOS SELECTIVOS (agrupados por categorías) ----------
+        self.cursos_selectivos = {
+            "Creatividad": [
+                {"codigo": "CU193", "nombre": "Confianza creativa", "descripcion": "Desarrollo de conceptos creativos para la resolución de retos y la innovación."},
+                {"codigo": "HL3042", "nombre": "Escritura creativa", "descripcion": "Introducción a técnicas de escritura creativa y desarrollo de portafolio."}
+            ],
+            "Negocios": [
+                {"codigo": "IA3041", "nombre": "Entrepreneurial Finance", "descripcion": "Finanzas aplicadas a emprendimientos y evaluación de proyectos."},
+                {"codigo": "HL3045", "nombre": "Comunicación en los negocios", "descripcion": "Habilidades de comunicación necesarias para el entorno empresarial."}
+            ],
+            "Tecnología": [
+                {"codigo": "CC178", "nombre": "Diseño e innovación con Inteligencia Artificial y LLM", "descripcion": "Uso de LLMs y herramientas de IA para innovación y creación de modelos de negocio."},
+                {"codigo": "ID1001", "nombre": "Computación científica para Ciencia e Ingeniería", "descripcion": "Aplicación de métodos numéricos y herramientas de cómputo a problemas de ingeniería."}
+            ],
+            "Bienestar": [
+                {"codigo": "PP198", "nombre": "Mindfulness y liderazgo positivo", "descripcion": "Atención plena y liderazgo para el bienestar y la resiliencia."},
+                {"codigo": "TD2020", "nombre": "The Science of Happiness", "descripcion": "Estrategias basadas en evidencia para aumentar el bienestar personal."}
+            ]
+        }
+
+    # -------------------- UTILIDADES --------------------
+    def _print_wrapped(self, text, width=78):
+        print(textwrap.fill(text, width=width))
+
+    def _simular_valoracion(self):
+        """Genera una valoración simulada (float 3.0 - 5.0)."""
+        return round(random.uniform(3.0, 5.0), 2)
+
+    def _get_docente_bio(self, nombre):
+        """Devuelve una bio si existe o genera una breve bio simulada."""
+        if nombre in self.docente_bios:
+            return self.docente_bios[nombre]
+        # generar una bio breve simulada
+        partes = nombre.split(",")[0].strip()
+        bio = f"{partes}: docente con experiencia académica y práctica en su área."
+        # guardamos para futuras consultas
+        self.docente_bios[nombre] = bio
+        return bio
+
+    # -------------------- MENÚ PRINCIPAL --------------------
+    def mostrar_menu_principal(self):
+        print("\n" + "="*78)
+        print("Bienvenidos a este programa — Universidad del Valle de Guatemala")
+        print("Este programa tiene como objetivo que conozcas la UVG y lo que ofrece.")
+        print("\nOpciones:")
+        print("1) Información sobre las diferentes Facultades y sus respectivas carreras")
+        print("2) Información sobre cursos y sus respectivos docentes")
+        print("3) Información sobre cursos selectivos")
+        print("4) Salir")
+        print("5) Prueba de compatibilidad de estilo de aprendizaje (Visual/Auditivo/Kinestésico)")
+        print("="*78)
+
+    # -------------------- FACULTADES y CARRERAS --------------------
+    def mostrar_facultades(self):
+        print("\nListado de Facultades:")
+        facultades = list(self.facultades.keys())
+        for i, fac in enumerate(facultades, 1):
+            print(f"{i}) {fac}")
+        try:
+            op = int(input("\nSeleccione el número de la facultad que desea explorar (0 para volver): "))
+            if op == 0:
+                return
+            if 1 <= op <= len(facultades):
+                fac_sel = facultades[op-1]
+                self.mostrar_carreras(fac_sel)
+            else:
+                print("Opción no válida.")
+        except ValueError:
+            print("Entrada no válida. Debe ingresar un número.")
+
+    def mostrar_carreras(self, facultad):
+        info_fac = self.facultades[facultad]
+        print("\n" + "-"*78)
+        print(f"FACULTAD: {facultad}")
+        print(f"Decano: {info_fac['decano']}")
+        print("Carreras disponibles:")
+        for num, carrera in info_fac["carreras"].items():
+            print(f"{num}) {carrera['nombre']}")
+        try:
+            op = int(input("\nSeleccione el número de la carrera para ver más (0 para volver): "))
+            if op == 0:
+                return
+            carreras = info_fac["carreras"]
+            if op in carreras:
+                c = carreras[op]
+                print("\n" + "-"*78)
+                print(f"Carrera: {c['nombre']}")
+                print(f"Director de Carrera: {c['director']}")
+                print(f"Decano: {info_fac['decano']}")
+                print("\nDescripción:")
+                self._print_wrapped(c['descripcion'])
+                # valoración simulada sobre la carrera
+                valor = self._simular_valoracion()
+                print(f"\nValoración simulada de la carrera (estudiantes/opiniones): {valor} / 5.00")
+                print("-"*78)
+            else:
+                print("Opción no válida.")
+        except ValueError:
+            print("Entrada no válida. Debe ingresar un número.")
+
+    # -------------------- CURSOS y DOCENTES --------------------
+    def mostrar_cursos(self):
+        print("\nSemestres disponibles:")
+        semestres = list(self.cursos.keys())
+        for i, s in enumerate(semestres, 1):
+            print(f"{i}) {s}")
+        try:
+            op = int(input("\nSeleccione el número del semestre (0 para volver): "))
+            if op == 0:
+                return
+            if 1 <= op <= len(semestres):
+                sem_sel = semestres[op-1]
+                cursos_sem = list(self.cursos[sem_sel].keys())
+                print(f"\nCursos en {sem_sel}:")
+                for i, curso in enumerate(cursos_sem, 1):
+                    print(f"{i}) {curso}")
+                op2 = int(input("\nSeleccione el curso para ver docentes (0 para volver): "))
+                if op2 == 0:
+                    return
+                if 1 <= op2 <= len(cursos_sem):
+                    curso_sel = cursos_sem[op2-1]
+                    docentes = self.cursos[sem_sel][curso_sel]
+                    print("\n" + "-"*78)
+                    print(f"Curso: {curso_sel} — Semestre: {sem_sel}")
+                    val_curso = self._simular_valoracion()
+                    print(f"Valoración simulada del curso: {val_curso} / 5.00\n")
+                    print("Docentes y ficha breve:")
+                    for d in docentes:
+                        bio = self._get_docente_bio(d)
+                        val_doc = self._simular_valoracion()
+                        print(f"- {d}")
+                        print(f"  Bio: {bio}")
+                        print(f"  Valoración simulada (docente): {val_doc} / 5.00")
+                    print("-"*78)
+                else:
+                    print("Opción no válida.")
+            else:
+                print("Opción no válida.")
+        except ValueError:
+            print("Entrada no válida. Debe ingresar un número.")
+
+    # -------------------- CURSOS SELECTIVOS (FILTROS) --------------------
+    def mostrar_cursos_selectivos(self):
+        print("\nCategorías de cursos selectivos:")
+        categorias = list(self.cursos_selectivos.keys())
+        for i, cat in enumerate(categorias, 1):
+            print(f"{i}) {cat}")
+        try:
+            op = int(input("\nSeleccione la categoría (0 para volver): "))
+            if op == 0:
+                return
+            if 1 <= op <= len(categorias):
+                cat_sel = categorias[op-1]
+                print(f"\nCursos selectivos en '{cat_sel}':")
+                for idx, curso in enumerate(self.cursos_selectivos[cat_sel], 1):
+                    print(f"{idx}) {curso['codigo']} - {curso['nombre']}")
+                op2 = int(input("\nSeleccione el curso para ver la descripción (0 para volver): "))
+                if op2 == 0:
+                    return
+                if 1 <= op2 <= len(self.cursos_selectivos[cat_sel]):
+                    curso = self.cursos_selectivos[cat_sel][op2-1]
+                    print("\n" + "-"*78)
+                    print(f"Código: {curso['codigo']}")
+                    print(f"Nombre: {curso['nombre']}")
+                    print("\nDescripción:")
+                    self._print_wrapped(curso['descripcion'])
+                    # valoración simulada
+                    print(f"\nValoración simulada del curso selectivo: {self._simular_valoracion()} / 5.00")
+                    print("-"*78)
+                else:
+                    print("Opción no válida.")
+            else:
+                print("Opción no válida.")
+        except ValueError:
+            print("Entrada no válida. Debe ingresar un número.")
+
+    # -------------------- PRUEBA DE COMPATIBILIDAD (3 PREGUNTAS) --------------------
+    def prueba_compatibilidad(self):
+        print("\n--- Prueba rápida de compatibilidad: Estilo de aprendizaje ---")
+        print("Responde las 3 preguntas con a / b / c. No hay respuestas correctas, sólo preferencia.\n")
+        puntos = {"visual": 0, "auditivo": 0, "kinestesico": 0}
+
+        # Pregunta 1
+        print("1) Para aprender un nuevo tema, ¿qué prefieres?")
+        print("  a) Ver diagramas, imágenes o videos.")
+        print("  b) Escuchar explicaciones o podcasts.")
+        print("  c) Hacer prácticas o actividades concretas.")
+        r = input("Respuesta (a/b/c): ").strip().lower()
+        if r == "a":
+            puntos["visual"] += 1
+        elif r == "b":
+            puntos["auditivo"] += 1
+        elif r == "c":
+            puntos["kinestesico"] += 1
+
+        # Pregunta 2
+        print("\n2) Si te explican un concepto difícil, ¿qué prefieres?")
+        print("  a) Ver un mapa conceptual o esquema.")
+        print("  b) Que te lo cuenten con ejemplos orales.")
+        print("  c) Manipular objetos o resolver problemas prácticos.")
+        r = input("Respuesta (a/b/c): ").strip().lower()
+        if r == "a":
+            puntos["visual"] += 1
+        elif r == "b":
+            puntos["auditivo"] += 1
+        elif r == "c":
+            puntos["kinestesico"] += 1
+
+        # Pregunta 3
+        print("\n3) Al estudiar, ¿qué haces más seguido?")
+        print("  a) Subrayar y usar colores en apuntes.")
+        print("  b) Leer en voz alta o escuchar grabaciones.")
+        print("  c) Hacer ejercicios, experimentos o maquetas.")
+        r = input("Respuesta (a/b/c): ").strip().lower()
+        if r == "a":
+            puntos["visual"] += 1
+        elif r == "b":
+            puntos["auditivo"] += 1
+        elif r == "c":
+            puntos["kinestesico"] += 1
+
+        # Interpretación del resultado
+        max_p = max(puntos.values())
+        estilos = [k for k, v in puntos.items() if v == max_p]
+
+        print("\n" + "-"*78)
+        if len(estilos) == 1:
+            estilo = estilos[0]
+            if estilo == "visual":
+                print("Resultado: Tu estilo predominante es VISUAL 👀")
+                print("Sugerencia breve: busca diagramas, videos y esquemas; usa colores y mapas conceptuales.")
+            elif estilo == "auditivo":
+                print("Resultado: Tu estilo predominante es AUDITIVO 👂")
+                print("Sugerencia breve: usa grabaciones, discute en voz alta y aprovecha podcasts y clases magistrales.")
+            else:
+                print("Resultado: Tu estilo predominante es KINESTÉSICO 🤲")
+                print("Sugerencia breve: aprende haciendo; prioriza prácticas, laboratorios y proyectos.")
+        else:
+            # empate
+            print("Resultado: Tienes un perfil mixto:", ", ".join(es.upper() for es in estilos))
+            print("Sugerencia breve: combina estrategias (p.ej. videos + práctica) para aprovechar lo mejor de cada estilo.")
+        # Mostrar puntuaciones por transparencia
+        print("\nPuntuaciones (simples):", puntos)
+        print("-"*78)
+
+    # -------------------- EJECUTAR APLICACIÓN --------------------
+    def ejecutar(self):
+        while True:
+            self.mostrar_menu_principal()
+            try:
+                op = int(input("\nIngrese opción (1-5): "))
+                if op == 1:
+                    self.mostrar_facultades()
+                elif op == 2:
+                    self.mostrar_cursos()
+                elif op == 3:
+                    self.mostrar_cursos_selectivos()
+                elif op == 4:
+                    print("\nGracias por usar el programa. ¡Éxito en tu camino académico en la UVG! 👋")
+                    break
+                elif op == 5:
+                    self.prueba_compatibilidad()
+                else:
+                    print("Opción no válida.")
+            except ValueError:
+                print("Entrada inválida — por favor ingresa un número.")
+
+# -------------------- PUNTO DE ENTRADA --------------------
+if __name__ == "__main__":
+    # Fijar semilla opcional para reproducibilidad de valoraciones si se desea:
+    # random.seed(42)
+    app = UniversidadDelValle()
+    app.ejecutar()
